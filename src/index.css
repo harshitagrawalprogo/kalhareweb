@@ -1,0 +1,95 @@
+@import "tailwindcss";
+
+@theme {
+  --color-navy-950: #001040;
+  --color-navy-900: #001a4d;
+  --color-navy: #002366;
+  --color-navy-700: #0a3080;
+  --color-navy-600: #1034A6;
+  --color-navy-500: #1a45c2;
+  --color-gold-600: #b8921e;
+  --color-gold: #D4AF37;
+  --color-gold-400: #e5c84b;
+  --color-gold-200: #f0dfa0;
+  --color-ink: #0A0A0A;
+  --color-bg: #F8F7F4;
+  --color-bg-warm: #F2F0EC;
+  --color-steel: #1a1a2e;
+  --font-heading: "Playfair Display", Georgia, "Times New Roman", serif;
+  --font-body: "Inter", system-ui, -apple-system, sans-serif;
+  --ease-luxury: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--color-bg);
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Utility: heading font ── */
+.font-heading {
+  font-family: var(--font-heading);
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #0a0a0a; }
+::-webkit-scrollbar-thumb { background: #D4AF37; border-radius: 2px; }
+
+/* ── Selection ── */
+::selection { background: #D4AF37; color: #0a0a0a; }
+
+/* ── Gold shimmer line ── */
+.gold-line {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #D4AF37, transparent);
+}
+
+/* ── Noise overlay for premium texture ── */
+.noise::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  opacity: 0.4;
+  mix-blend-mode: overlay;
+}
+
+/* ── Grid blueprint background ── */
+.blueprint-grid {
+  background-image:
+    linear-gradient(rgba(212, 175, 55, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(212, 175, 55, 0.04) 1px, transparent 1px);
+  background-size: 80px 80px;
+}
+
+/* ── Section transition clip ── */
+.clip-angle {
+  clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);
+}
+.clip-angle-top {
+  clip-path: polygon(0 8%, 100% 0, 100% 100%, 0 100%);
+}
+
+/* ── Configurator step ── */
+.step-active {
+  background: #002366;
+  color: #fff;
+  border-color: #002366;
+}
+.step-done {
+  background: #D4AF37;
+  color: #0a0a0a;
+  border-color: #D4AF37;
+}
