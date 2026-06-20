@@ -9,6 +9,7 @@ const navLinks = [
   { label: "Products", href: "/kalhare/products" },
   { label: "Custom Transformers", href: "/kalhare/custom" },
   { label: "Contact", href: "/kalhare/contact" },
+  { label: "Test Product", href: "/kalhare/testproduct" },
 ];
 
 function KalhareNav() {
