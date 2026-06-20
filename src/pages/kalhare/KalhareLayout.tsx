@@ -40,14 +40,12 @@ function KalhareNav() {
       />
 
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-16 md:h-20">
-        <Link to="/kalhare" className="flex items-center gap-3 group">
-          <div className="w-9 h-9 border border-gold/50 flex items-center justify-center group-hover:bg-gold group-hover:border-gold transition-all duration-300">
-            <span className="font-heading font-bold text-gold group-hover:text-ink text-lg leading-none transition-colors duration-300">K</span>
-          </div>
-          <div>
-            <p className="text-white font-body font-semibold text-sm tracking-wider leading-none">KALHARE</p>
-            <p className="text-gold/50 font-body text-[10px] tracking-[0.25em] uppercase leading-none mt-0.5">ENTERPRISES</p>
-          </div>
+        <Link to="/" className="flex items-center group">
+          <img
+            src="/images/kalhare-logo.jpeg"
+            alt="Kalhare Enterprises"
+            className="h-10 w-auto object-contain opacity-90 group-hover:opacity-100 transition-opacity duration-300"
+          />
         </Link>
 
         <nav className="hidden md:flex items-center gap-8">

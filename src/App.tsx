@@ -1,6 +1,7 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { AnimatePresence } from "framer-motion";
+﻿import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { AnimatePresence, motion } from "framer-motion";
 import GroupGateway from "./pages/GroupGateway";
+import CustomCursor from "./components/CustomCursor";
 import KalhareLayout from "./pages/kalhare/KalhareLayout";
 import KalhareHome from "./pages/kalhare/KalhareHome";
 import KalhareAbout from "./pages/kalhare/KalhareAbout";
@@ -14,11 +15,20 @@ import PressmachMachines from "./pages/pressmach/PressmachMachines";
 import PressmachCustom from "./pages/pressmach/PressmachCustom";
 import PressmachContact from "./pages/pressmach/PressmachContact";
 
-export default function App() {
+const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
+
+function AnimatedRoutes() {
+  const location = useLocation();
   return (
-    <BrowserRouter>
-      <AnimatePresence mode="wait">
-        <Routes>
+    <AnimatePresence mode="wait">
+      <motion.div
+        key={location.pathname}
+        initial={{ opacity: 0, filter: "blur(4px)" }}
+        animate={{ opacity: 1, filter: "blur(0px)" }}
+        exit={{ opacity: 0, filter: "blur(4px)" }}
+        transition={{ duration: 0.35, ease: EASE }}
+      >
+        <Routes location={location}>
           <Route path="/" element={<GroupGateway />} />
 
           <Route path="/kalhare" element={<KalhareLayout />}>
@@ -37,7 +47,15 @@ export default function App() {
             <Route path="contact" element={<PressmachContact />} />
           </Route>
         </Routes>
-      </AnimatePresence>
+      </motion.div>
+    </AnimatePresence>
+  );
+}
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <CustomCursor />      <AnimatedRoutes />
     </BrowserRouter>
   );
 }

@@ -28,6 +28,13 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Hide default cursor globally — custom cursor component renders instead */
+@media (pointer: fine) {
+  html, body, * {
+    cursor: none !important;
+  }
+}
+
 body {
   font-family: var(--font-body);
   background: var(--color-bg);
